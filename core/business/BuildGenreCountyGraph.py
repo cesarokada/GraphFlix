@@ -1,5 +1,6 @@
 from core.domain.Graph import Graph
 from core.domain.Node import Node
+from core.domain.Link import Link
 
 class BuildGenreCountry(object):
    
@@ -16,9 +17,10 @@ class BuildGenreCountry(object):
             genres = title.listed_in.split(", ")
 
             for genre in genres:
-                new_link = Node(genre)
-                new_link.id = self._get_genre_id(genre)
-                links.append(new_link)
+                node_link = Node(genre)
+                node_link.id = self._get_genre_id(genre)
+                link = Link(node_link, True)
+                links.append(link)
 
             #create nodes (countries)
             title_countries = title.country.split(", ")
