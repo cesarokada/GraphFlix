@@ -22,11 +22,14 @@ class BuildGenreCountry(object):
 
             #create nodes (countries)
             title_countries = title.country.split(", ")
-
             for country in title_countries:
-                new_node = Node(country)
-                new_node.add_link(links)
-                self.graph.add_node(new_node)
+                if country:
+                    if country.endswith(','):
+                        country = country[:-1]
+
+                    new_node = Node(country)
+                    new_node.add_link(links)
+                    self.graph.add_node(new_node)
 
     def _get_genre_id(self, genre):
         genre_id = 0
