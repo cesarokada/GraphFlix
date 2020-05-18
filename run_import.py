@@ -4,6 +4,7 @@ import datetime
 
 from core.business import LoadTitles
 from core.business import BuildGenreCountyGraph
+from core.utils.NetworkConverter import NetworkConverter
 
 local_path = os.path.abspath(os.path.dirname(__file__))
 output_path = os.path.join(local_path, "out")

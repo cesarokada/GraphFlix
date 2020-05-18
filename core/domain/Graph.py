@@ -14,7 +14,7 @@ class Graph(object):
             new_links = Link.merge_links(node.links, existent_node.links)
             existent_node.set_links(new_links)
         else:
-            node.id = self._generate_node_id()
+            node.id = self._generate_node_id(node.prefix)
             self.nodes.append(node)
 
     def generate_link_file(self, relative_path, file_name):
@@ -22,11 +22,12 @@ class Graph(object):
             for node in self.nodes:
                 file.write(node.get_formatated_links())
 
-    def _generate_node_id(self):
+    def _generate_node_id(self, prefix):
         generated_id = 1
 
         if self.nodes:
             last_node = self.nodes[-1]
-            generated_id = last_node.id + 1
+            number_id = int(last_node.id[1:])
+            generated_id = number_id + 1
     
-        return generated_id
+        return '{0}{1}'.format(prefix, generated_id)

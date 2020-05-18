@@ -1,9 +1,10 @@
 class Node (object):
     
-    def __init__(self, description):
+    def __init__(self, description, prefix):
         self.id = 0
         self.description = description
         self.links = []
+        self.prefix = prefix
 
     def add_link(self, links):
         self.links.extend(links)

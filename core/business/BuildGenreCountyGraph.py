@@ -1,6 +1,7 @@
 from core.domain.Graph import Graph
 from core.domain.Node import Node
 from core.domain.Link import Link
+from core.domain import Constants
 
 class BuildGenreCountry(object):
    
@@ -17,7 +18,7 @@ class BuildGenreCountry(object):
             genres = title.listed_in.split(", ")
 
             for genre in genres:
-                node_link = Node(genre)
+                node_link = Node(genre, Constants.GENRE_PREFIX_LABEL)
                 node_link.id = self._get_genre_id(genre)
                 link = Link(node_link, True)
                 links.append(link)
@@ -29,7 +30,7 @@ class BuildGenreCountry(object):
                     if country.endswith(','):
                         country = country[:-1]
 
-                    new_node = Node(country)
+                    new_node = Node(country, Constants.COUNTRY_PREFIX_LABEL)
                     new_node.add_link(links)
                     self.graph.add_node(new_node)
 
@@ -45,7 +46,5 @@ class BuildGenreCountry(object):
             genre_id = self.genre_count
             self.genre_count += 1
         
-        return genre_id
-        
-
+        return '{0}{1}'.format(Constants.GENRE_PREFIX_LABEL, genre_id)
     
