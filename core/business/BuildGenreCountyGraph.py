@@ -20,7 +20,7 @@ class BuildGenreCountry(object):
             for genre in genres:
                 node_link = Node(genre, Constants.GENRE_PREFIX_LABEL)
                 node_link.id = self._get_genre_id(genre)
-                link = Link(node_link, True)
+                link = Link(node_link)
                 links.append(link)
 
             #create nodes (countries)

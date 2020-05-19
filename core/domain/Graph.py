@@ -17,11 +17,6 @@ class Graph(object):
             node.id = self._generate_node_id(node.prefix)
             self.nodes.append(node)
 
-    def generate_link_file(self, relative_path, file_name):
-        with open(os.path.join(relative_path, file_name), "w") as file:
-            for node in self.nodes:
-                file.write(node.get_formatated_links())
-
     def _generate_node_id(self, prefix):
         generated_id = 1
 

@@ -5,6 +5,7 @@ import datetime
 from core.business import LoadTitles
 from core.business import BuildGenreCountyGraph
 from core.utils.NetworkConverter import NetworkConverter
+from core.utils.GephiFormatConverter import GephiFormatConverter
 
 local_path = os.path.abspath(os.path.dirname(__file__))
 output_path = os.path.join(local_path, "out")
@@ -22,4 +23,7 @@ print("+++++ CSV file loaded successfully")
 print("+++++ Building Graph... This could take several minutes...")
 builder = BuildGenreCountyGraph.BuildGenreCountry(titles)
 builder.build_graph()
-builder.graph.generate_link_file(output_path, 'genre-country.out')
+genre_country_network = NetworkConverter.get_network(builder.graph)
+GephiFormatConverter.generate_file(genre_country_network, output_path, 'genre-country.net')
+
+
