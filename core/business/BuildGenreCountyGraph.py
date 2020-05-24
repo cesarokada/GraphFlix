@@ -1,3 +1,4 @@
+from operator import attrgetter
 from core.domain.Graph import Graph
 from core.domain.Node import Node
 from core.domain.Link import Link
@@ -33,6 +34,15 @@ class BuildGenreCountry(object):
                     new_node = Node(country, Constants.COUNTRY_PREFIX_LABEL)
                     new_node.add_link(links)
                     self.graph.add_node(new_node)
+
+    def most_common_genre_by_country(self, country_id):
+        country_node = next((e for e in self.graph.nodes if e.id == country_id), None)
+
+        if country_node:
+            return max(country_node.links, key=attrgetter('weight'))
+            
+        else:
+            return None
 
     def _get_genre_id(self, genre):
         genre_id = 0
