@@ -7,7 +7,7 @@ class Graph(object):
         self.description = description
         self.nodes = []
 
-    def add_node(self, node):
+    def add_node_with_merge_links(self, node):
         existent_node = next((e for e in self.nodes if e.description == node.description), None)
 
         if existent_node != None:
@@ -16,6 +16,9 @@ class Graph(object):
         else:
             node.id = self._generate_node_id(node.prefix)
             self.nodes.append(node)
+
+    def add_node(self, node):
+        self.nodes.append(node)
 
     def _generate_node_id(self, prefix):
         generated_id = 1

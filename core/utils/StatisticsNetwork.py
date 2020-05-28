@@ -27,9 +27,12 @@ class StatisticsNetwork(object):
         print('=====        Statistics Report      ======= ')
         print('Number of Nodes: ', G.number_of_nodes())
         print('Number of Edges: ', G.number_of_edges())
-        print('Distance Average: ', nx.average_shortest_path_length(G))
-        print('Computed Average Degree: ', StatisticsNetwork._get_average_degree(G))
-        print('Clustering Coeficient: ', nx.clustering(G))
+        
+        if nx.is_connected(G):
+            print('Distance Average: ', nx.average_shortest_path_length(G))
+            print('Computed Average Degree: ', StatisticsNetwork._get_average_degree(G))
+            print('Clustering Coeficient: ', nx.clustering(G))
+        
         StatisticsNetwork._connected_components_report(G)
 
     

@@ -1,7 +1,7 @@
 class Node (object):
     
-    def __init__(self, description, prefix):
-        self.id = 0
+    def __init__(self, description, prefix, id = 0):
+        self.id = id
         self.description = description
         self.links = []
         self.prefix = prefix

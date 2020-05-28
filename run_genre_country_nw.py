@@ -21,7 +21,7 @@ titles = load_titles.load_from_csv_file(
 print("+++++ CSV file loaded successfully")
 
 
-print("+++++ Building Graph... This could take several minutes...")
+print("+++++ Building GENRE-COUNTRY Graph... This could take several minutes...")
 builder = BuildGenreCountyGraph.BuildGenreCountry(titles)
 builder.build_graph()
 genre_country_network = NetworkConverter.get_network(builder.graph)

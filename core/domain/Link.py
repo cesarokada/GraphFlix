@@ -1,7 +1,7 @@
 class Link(object):
     
-    def __init__(self, node_link):
-        self.weight = 1
+    def __init__(self, node_link, weight = 1):
+        self.weight = weight
         self.node_link = node_link
 
     @staticmethod
