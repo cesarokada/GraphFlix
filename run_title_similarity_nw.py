@@ -27,3 +27,7 @@ builder.build_graph()
 title_network = NetworkConverter.get_network(builder.graph)
 GephiFormatConverter.generate_file(title_network, output_path, 'title-similatiry.net')
 StatisticsNetwork.get_full_report(title_network)
+
+query_title = 'T70109884'
+most_similar = builder.get_most_similar(query_title)
+print('Most similar title {0} is {1}, which is {2} per cente similar.'.format(query_title, most_similar.node_link.description, most_similar.weight))

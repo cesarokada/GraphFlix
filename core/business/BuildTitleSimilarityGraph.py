@@ -31,6 +31,14 @@ class BuildTitleSimilarityGraph(object):
             title_node.add_link(links)
             self.graph.add_node(title_node)
 
+    def get_most_similar(self, title_id):
+        most_similar = next((e for e in self.graph.nodes if e.id == title_id), None)
+
+        if most_similar:
+            return max(most_similar.links, key = attrgetter('weight'))
+        else:
+            return None
+
     @staticmethod
     def _jaccard_similarity_text(str1, str2):
         a = set(str1.lower().split()) 
