@@ -1,14 +1,13 @@
 from operator import attrgetter
-from core.domain.Graph import Graph
 from core.domain.Node import Node
+from core.domain.Graph import Graph
 from core.domain.Link import Link
 from core.domain import Constants
 
-class BuildGenreCountry(object):
-   
+class  BuildActorGenreGraph (object):
     def __init__(self, titles):
         self.titles = titles
-        self.graph = Graph("Graph for relationship among countries and genres")
+        self.graph = Graph("Graph for relationship among actors and genres")
         self.distinct_genre = {}
         self.genre_count = 1
 
@@ -23,25 +22,16 @@ class BuildGenreCountry(object):
                 link = Link(node_link)
                 links.append(link)
 
-            #create nodes (countries)
-            title_countries = title.country.split(", ")
-            for country in title_countries:
-                if country:
-                    if country.endswith(','):
-                        country = country[:-1]
+            #create nodes (actors)
+            actors = title.cast.split(", ")
+            for actor in actors:
+                if actor:
+                    if actor.endswith(','):
+                        actor = actor[:-1]
 
-                    new_node = Node(country, Constants.COUNTRY_PREFIX_LABEL)
+                    new_node = Node(actor, Constants.ACTOR_PREFIX_LABEL)
                     new_node.add_link(links)
                     self.graph.add_node_with_merge_links(new_node)
-
-    def most_common_genre_by_country(self, country_id):
-        country_node = next((e for e in self.graph.nodes if e.id == country_id), None)
-
-        if country_node:
-            return max(country_node.links, key=attrgetter('weight'))
-            
-        else:
-            return None
 
     def _get_genre_id(self, genre):
         genre_id = 0
@@ -56,4 +46,3 @@ class BuildGenreCountry(object):
             self.genre_count += 1
         
         return '{0}{1}'.format(Constants.GENRE_PREFIX_LABEL, genre_id)
-    
