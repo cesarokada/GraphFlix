@@ -1,3 +1,4 @@
+import networkx as nx
 import os.path
 
 class GephiFormatConverter(object):
