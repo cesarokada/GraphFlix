@@ -12,7 +12,7 @@ class GephiFormatConverter(object):
             
             for node in G.nodes:
                 nodes.append(node)
-                file.write('\n{0} "{1}"'.format(nodes.index(node) + 1, node))
+                file.write('\n{0} "{1}"'.format(nodes.index(node) + 1, node.encode("utf-8")))
 
             file.write('\n*Edges')
             for edge in G.edges.data('weight', default = 1):

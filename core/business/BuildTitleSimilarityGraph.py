@@ -14,7 +14,7 @@ class BuildTitleSimilarityGraph(object):
     def build_graph(self):
         for title in self.titles:
             links = []
-            title_node = Node(title.show_id, Constants.TITLE_PREFIX_LABEL, '{0}{1}'.format(Constants.TITLE_PREFIX_LABEL, title.show_id))
+            title_node = Node(title.show_id, Constants.TITLE_PREFIX_LABEL, '{0}{1}'.format(Constants.TITLE_PREFIX_LABEL, title.title))
             
             for link_title in self.titles:
                 if link_title.show_id == title.show_id:
@@ -24,7 +24,7 @@ class BuildTitleSimilarityGraph(object):
                 
                 if Constants.MIN_SIMILARITY_COEFFICIENT <= similarity_coeff:
                     weight = int(similarity_coeff * 100)
-                    link_node = Node(link_title.show_id, Constants.TITLE_PREFIX_LABEL, '{0}{1}'.format(Constants.TITLE_PREFIX_LABEL, link_title.show_id))
+                    link_node = Node(link_title.show_id, Constants.TITLE_PREFIX_LABEL, '{0}{1}'.format(Constants.TITLE_PREFIX_LABEL, link_title.title))
                     link = Link(link_node, weight)
                     links.append(link)
             
