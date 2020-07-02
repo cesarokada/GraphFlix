@@ -31,18 +31,17 @@ class  BuildActorGenreGraph (object):
 
                     new_node = Node(actor, Constants.ACTOR_PREFIX_LABEL)
                     new_node.add_link(links)
-                    self.graph.add_node_with_merge_links(new_node)
+                    self.graph.add_node_withid_and_merge_links(new_node)
 
     def _get_genre_id(self, genre):
-        genre_id = 0
-        
+        genre_id = ''
         for key in self.distinct_genre:
             if self.distinct_genre[key] == genre:
-                genre_id = key
+                genre_id = genre
 
-        if genre_id == 0:
+        if genre_id == '':
             self.distinct_genre[self.genre_count] = genre
-            genre_id = self.genre_count
+            genre_id = genre
             self.genre_count += 1
         
         return '{0}{1}'.format(Constants.GENRE_PREFIX_LABEL, genre_id)

@@ -77,9 +77,9 @@ class StatisticsNetwork(object):
     def get_full_report(G):
         print('=====        Statistics Report      ======= ')
         StatisticsNetwork._get_basic_report(G)
-        StatisticsNetwork._connected_components_report(G)
         StatisticsNetwork._centrality_metrics(G)
         StatisticsNetwork.get_community_report(G)
+        StatisticsNetwork._connected_components_report(G)
         
 
     

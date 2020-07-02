@@ -24,5 +24,5 @@ print("+++++ Building GENRE-COUNTRY Graph... This could take several minutes..."
 builder = BuildGenreCountyGraph.BuildGenreCountry(titles)
 builder.build_graph()
 genre_country_network = NetworkConverter.get_network(builder.graph)
-GephiFormatConverter.generate_file(genre_country_network, output_path, 'genre-country.net')
+GephiFormatConverter.generate_file(genre_country_network, output_path, 'genre-country.gexf')
 StatisticsNetwork.get_full_report(genre_country_network)

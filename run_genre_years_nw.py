@@ -20,9 +20,9 @@ titles = load_titles.load_from_csv_file(
 print("+++++ CSV file loaded successfully")
 
 
-print("+++++ Building GENRE-COUNTRY Graph... This could take several minutes...")
+print("+++++ Building GENRE-YEARS Graph... This could take several minutes...")
 builder = BuildGenreYearGraph.BuildGenreYearGraph(titles)
 builder.build_graph()
 genre_years_network = NetworkConverter.get_network(builder.graph)
-GephiFormatConverter.generate_file(genre_years_network, output_path, 'genre-years.net')
+GephiFormatConverter.generate_file(genre_years_network, output_path, 'genre-years.gexf')
 StatisticsNetwork.get_full_report(genre_years_network)

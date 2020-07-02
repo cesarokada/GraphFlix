@@ -25,5 +25,5 @@ print("+++++ Building TITLE-SIMILARITY Graph... This could take several minutes.
 builder = BuildTitleSimilarityGraph(titles)
 builder.build_graph()
 title_network = NetworkConverter.get_network(builder.graph)
-GephiFormatConverter.generate_file(title_network, output_path, 'title-similatiry.net')
+GephiFormatConverter.generate_file(title_network, output_path, 'title-similatiry.gexf')
 StatisticsNetwork.get_full_report(title_network)
